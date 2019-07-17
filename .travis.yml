@@ -1,12 +1,11 @@
 language: bash
-env:
-  global:
-  - DOCKER_USERNAME="chilantim"
-  - secure: 2JZhHIqKTz/x3/xyLXoh68QjQ40fmTftdl71nyruCKESMqba3Kz3SO8UgtE3qVYh/Mwx+Qkr9MWz8M9B2XC99Z2+gW4gZvmHq26evxVJy98AQRQilDKVym7LtoH56LxHzpshhDxt6/eqk9E92RDdT27q/pqeYZKgU9R/KmhYnjF4SJLQCElsUf0Js90znz/3eXL+uZOkfK8wWb9/UnzqrbId9LbW8idGGIePc15QaTs9965DwuhPJibls4mgsk823gHKaqBdTLpPj7iy/CwhPjhqDJDhfU4o2Zyf40Ul0z07qfba8pWxT3pQTXNQppIyHEfvEKcJr5+lp7PAVw286fGY3E37EIKPwMGTP9Y3ClDi8YiGpr3UjEWuUHKDlIGY+pC4tPWssigK0MnuDY70P0B2Mdx6EQzzuSoDHkSqzwtqga5tYLI6lw+YOhppqulIw7eolm0emDRQXyORyz0/IjmCimRd8Yd/HI0AX4BFzlFspTV2I9zfTN1R+hx7cZN6CkQCto6Tdd0wCa73Jrstu5gk79ucKVITJN1pcOIHZzLEikDMkcBL+mL4w56ITZO+9gLEFvJ90IoJoSUx5VH8bIUERjxLIrE4jYQIxbRqetYawGm88gZCSSUOgwG1PIHNY8PMbV9Q/TklJLv7VPJTPZsaD1xSRwNXx/6M1Lr4pbM=
 os:
 - linux
 services:
 - docker
-script:
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- "./docker-build.sh"
+deploy:
+  on:
+    branch: master
+    tags: true
+  provider: script
+  script: bash ./docker-build.sh
