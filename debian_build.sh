@@ -8,9 +8,6 @@ tar -xvf ../appsody-deb.tar
 mkdir tree
 cd ./tree
 cp /input/${CMD_NAME}.static .
-#wget https://raw.githubusercontent.com/chilanti/mock-watcher/master/${CMD_NAME}-controller
-#wget ${CONTROLLER_BASE_URL}/${CMD_NAME}-controller
-#mv ${CMD_NAME}-controller ${CMD_NAME}-controller.static
 
 cd ../debian
 sed -i "s/PACKAGE_NAME/$CMD_NAME/g" control
